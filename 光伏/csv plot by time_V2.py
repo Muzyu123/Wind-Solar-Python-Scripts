@@ -8,6 +8,8 @@ END_TIME = "2025-11-10 23:59"
 X_COL = "time1"
 Y_COL = "Instantaneous value of horizontal radiation"
 
+SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
+
 df = pd.read_csv("/work/zfshu/24learn/hyx-test/My_py/光伏/数据/EnRaw/HHFK-2025-En.csv")
 
 df[X_COL] = pd.to_datetime(df[X_COL], errors='coerce')
@@ -31,3 +33,6 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))  # 设置格式为�
 
 plt.xticks(rotation=45)  # 旋转 x 轴标签以便更好地显示
 plt.show()
+plt.savefig(os.path.join(SCRIPT_PATH, "plot.png"), dpi=300)  # 保存图像为 plot.png，分辨率为 300 dpi
+
+print(f"图像已保存为: {os.path.join(SCRIPT_PATH, 'plot.png')}")
