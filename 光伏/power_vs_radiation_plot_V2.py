@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import os
 import matplotlib.dates as mdates
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def normalize(series):
     return (series - series.min()) / (series.max() - series.min())
 
@@ -138,7 +140,7 @@ def plot_combined_chart():
     
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig("/work/zfshu/24learn/hyx-test/大创/葵花卫星/场站对照/卫星vs场站.png")
+    plt.savefig(os.path.join(SCRIPT_DIR, "combined_chart.png"), dpi=300)
     plt.show()
     
     # 打印数据量信息
